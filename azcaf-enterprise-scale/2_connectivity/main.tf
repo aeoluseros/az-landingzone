@@ -5,7 +5,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 3.66.0"
+      version = "=3.90.0"
     }
   }
   backend "local" {
@@ -30,8 +30,8 @@ data "azurerm_client_config" "current" {}
 
 module "alz" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "4.1.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
-  default_location = "centralus"
+  version = "5.0.3" 
+  default_location = "eastus"
   providers = {
     azurerm              = azurerm
     azurerm.connectivity = azurerm

@@ -5,11 +5,8 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.66.0"
+      version = "=3.90.0"
     }
-  }
-  backend "local" {
-    path = "./core.tfstate"
   }
 }
 
@@ -28,14 +25,15 @@ data "azurerm_client_config" "current" {}
 
 module "alz" {
   source  = "Azure/caf-enterprise-scale/azurerm"
-  version = "4.1.0" # change this to your desired version, https://www.terraform.io/language/expressions/version-constraints
+  version = "5.0.3"
 
   providers = {
     azurerm              = azurerm
     azurerm.connectivity = azurerm
     azurerm.management   = azurerm
   }
- default_location = "centralus"
+
+ default_location = "eastus"
   # Base module configuration settings
   root_parent_id = data.azurerm_client_config.current.tenant_id
   root_id        = var.root_id
